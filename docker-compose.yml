@@ -1,0 +1,17 @@
+services:
+  simplz-rtsp:
+    build: .
+    image: simplz-rtsp:latest
+    restart: unless-stopped
+    environment:
+      # Required: the camera/source RTSP URL (credentials inline if needed).
+      # Set this in a local .env file (see .env.example) or the shell environment.
+      RTSP_URL: "${RTSP_URL:?set RTSP_URL in .env}"
+      # Optional tuning:
+      # RTSP_TRANSPORT: "tcp"      # tcp (default) or udp
+      # RTSP_TRANSCODE: "false"    # set true if the source codec won't play in-browser
+    ports:
+      - "8090:8080"
+    # HLS segments are ephemeral; keep them in RAM.
+    tmpfs:
+      - /tmp/hls

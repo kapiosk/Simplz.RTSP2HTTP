@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simplz.RTSP</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #111; color: #ccc;
+                 font-family: system-ui, sans-serif; }
+    .wrap { display: flex; flex-direction: column; height: 100%; }
+    header { padding: .6rem 1rem; font-size: .9rem; opacity: .7; }
+    video { flex: 1; width: 100%; background: #000; object-fit: contain; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>Simplz.RTSP &mdash; live feed</header>
+    <video id="video" controls autoplay muted playsinline></video>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
+  <script>
+    const src = "/stream/index.m3u8";
+    const video = document.getElementById("video");
+
+    if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      // Safari / iOS — native HLS.
+      video.src = src;
+    } else if (window.Hls && Hls.isSupported()) {
+      const hls = new Hls({ liveSyncDurationCount: 3, lowLatencyMode: true });
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      // Retry until ffmpeg has produced the first segments.
+      hls.on(Hls.Events.ERROR, (_, data) => {
+        if (data.fatal) setTimeout(() => { hls.loadSource(src); hls.startLoad(); }, 2000);
+      });
+    } else {
+      document.querySelector("header").textContent = "HLS is not supported in this browser.";
+    }
+  </script>
+</body>
+</html>

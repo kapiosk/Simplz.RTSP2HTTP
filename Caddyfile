@@ -1,0 +1,26 @@
+# Sample Caddy config — reverse proxy in front of Simplz.RTSP.
+# Caddy auto-provisions and renews TLS for the domain below.
+#
+# Drop this into the server's Caddyfile (or /etc/caddy/Caddyfile) and adjust
+# the domain + upstream host:port. If the container runs on the same host with
+# the compose mapping above, the upstream is localhost:8080.
+
+rtsp.example.com {
+	encode zstd gzip
+
+	# Forward everything to the app (player, /stream/*.m3u8, /stream/*.ts).
+	reverse_proxy localhost:8090 {
+		# HLS is a series of short polls; disable buffering for low latency.
+		flush_interval -1
+	}
+
+	# Optional: gate the stream behind HTTP basic auth.
+	# Generate a hash with:  caddy hash-password
+	# basic_auth {
+	# 	viewer JDJhJDE0J...your-bcrypt-hash...
+	# }
+
+	log {
+		output file /var/log/caddy/rtsp.log
+	}
+}

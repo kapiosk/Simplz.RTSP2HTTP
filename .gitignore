@@ -1,0 +1,23 @@
+# Local configuration / secrets — never commit real URLs, creds, or hosts.
+.env
+.env.*
+!.env.example
+
+# .NET build output
+bin/
+obj/
+*.user
+*.suo
+
+# Rider / VS / VS Code
+.idea/
+.vs/
+.vscode/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Runtime HLS output (if ever written under the repo)
+hls/
+wwwroot/stream/
