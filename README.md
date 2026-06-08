@@ -75,3 +75,7 @@ caddy reload --config /etc/caddy/Caddyfile
   considerably less "minimal".
 - Only the **most recent** segments are kept on disk (`delete_segments`), so the
   HLS dir stays small and fits comfortably in tmpfs/RAM.
+
+## License
+
+[MIT](./LICENSE)
