@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Simplz.RTSP;
+namespace Simplz.RTSP2HTTP;
 
 /// <summary>
 /// Pulls an RTSP feed with ffmpeg and repackages it as HLS on disk.

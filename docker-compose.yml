@@ -1,7 +1,7 @@
 services:
-  simplz-rtsp:
+  simplz-rtsp2http:
     build: .
-    image: simplz-rtsp:latest
+    image: simplz-rtsp2http:latest
     restart: unless-stopped
     environment:
       # Required: the camera/source RTSP URL (credentials inline if needed).

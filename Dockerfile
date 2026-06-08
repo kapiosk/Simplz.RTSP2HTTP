@@ -1,7 +1,7 @@
 # ---- build ----
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY Simplz.RTSP.csproj .
+COPY Simplz.RTSP2HTTP.csproj .
 RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app
@@ -24,4 +24,4 @@ EXPOSE 8080
 HEALTHCHECK --interval=15s --timeout=3s --start-period=20s --retries=5 \
     CMD ["bash", "-c", "curl -fsS http://localhost:8080/healthz || exit 1"]
 
-ENTRYPOINT ["dotnet", "Simplz.RTSP.dll"]
+ENTRYPOINT ["dotnet", "Simplz.RTSP2HTTP.dll"]

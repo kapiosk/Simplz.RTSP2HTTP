@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <RootNamespace>Simplz.RTSP</RootNamespace>
+    <RootNamespace>Simplz.RTSP2HTTP</RootNamespace>
   </PropertyGroup>
 
 </Project>

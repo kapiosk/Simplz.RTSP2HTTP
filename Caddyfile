@@ -1,4 +1,4 @@
-# Sample Caddy config — reverse proxy in front of Simplz.RTSP.
+# Sample Caddy config — reverse proxy in front of Simplz.RTSP2HTTP.
 # Caddy auto-provisions and renews TLS for the domain below.
 #
 # Drop this into the server's Caddyfile (or /etc/caddy/Caddyfile) and adjust

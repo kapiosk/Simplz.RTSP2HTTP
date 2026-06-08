@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
-using Simplz.RTSP;
+using Simplz.RTSP2HTTP;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-# Simplz.RTSP
+# Simplz.RTSP2HTTP
 
 Minimal ASP.NET (.NET 10) service that pulls a single **RTSP** feed and re-serves
 it as browser-playable **HLS** over HTTP. ffmpeg handles the RTSP→HLS repackaging
@@ -41,11 +41,11 @@ dotnet run
 ## Run with Docker
 
 ```bash
-docker build -t simplz-rtsp .
+docker build -t simplz-rtsp2http .
 docker run --rm -p 8080:8080 \
   -e RTSP_URL="rtsp://user:pass@camera-host:554/stream" \
   --tmpfs /tmp/hls \
-  simplz-rtsp
+  simplz-rtsp2http
 ```
 
 Or with compose (edit `RTSP_URL` first):
